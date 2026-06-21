@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>日常查询与对照 · 雨燕直播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f6fafb;
+            color: #1f2a2f;
+            line-height: 1.7;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-wrapper {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 网格卡片背景 蓝绿点缀 */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(20, 120, 110, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 120, 110, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: -1px -1px;
+            padding: 0.5rem 0 1.2rem;
+        }
+
+        /* 标题区 */
+        .blog-header {
+            padding: 1.8rem 0 0.6rem;
+            border-bottom: 1px solid #cddfdb;
+            margin-bottom: 1.8rem;
+        }
+        .blog-header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0a3a35;
+            line-height: 1.2;
+            margin-bottom: 0.35rem;
+        }
+        .blog-header .sub {
+            font-size: 0.95rem;
+            color: #3b6b63;
+            background: rgba(110, 180, 165, 0.12);
+            display: inline-block;
+            padding: 0.1rem 1rem 0.2rem;
+            border-radius: 40px;
+            margin-top: 0.2rem;
+            font-weight: 450;
+        }
+
+        /* 导语 */
+        .lead {
+            font-size: 1.1rem;
+            background: #e9f3f0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            margin: 0.5rem 0 2rem;
+            border-left: 6px solid #3f8a7a;
+            box-shadow: 0 4px 8px rgba(0, 30, 20, 0.04);
+            font-weight: 400;
+        }
+
+        /* 正文卡片 */
+        .text-card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            padding: 1.6rem 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 28px;
+            box-shadow: 0 6px 16px rgba(40, 90, 80, 0.04), 0 0 0 1px rgba(110, 180, 165, 0.18);
+            transition: box-shadow 0.15s;
+        }
+        .text-card:hover {
+            box-shadow: 0 10px 24px rgba(40, 90, 80, 0.06), 0 0 0 1px #3f8a7a;
+        }
+        .text-card h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #0a3a35;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .text-card h2::before {
+            content: "▍";
+            color: #2d8f7a;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+        .text-card p {
+            margin-bottom: 0.9rem;
+        }
+        .text-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 引用块 */
+        .callout {
+            background: #e2f0ec;
+            padding: 1.2rem 1.5rem;
+            border-radius: 40px 20px 20px 40px;
+            margin: 1.8rem 0;
+            border: 1px solid #b7d3cb;
+            color: #1e423b;
+            font-size: 0.98rem;
+            box-shadow: inset 0 0 0 1px #ffffff80;
+        }
+        .callout strong {
+            color: #0a3a35;
+            font-weight: 600;
+        }
+        .callout a {
+            color: #076454;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1.5px;
+            font-weight: 500;
+        }
+        .callout a:hover {
+            background: #bfdfd6;
+            text-decoration: none;
+            border-radius: 12px;
+            padding: 0 0.2rem;
+        }
+
+        /* 场景网格（两列） */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0 1.4rem;
+        }
+        .scene-item {
+            background: #f4faf8;
+            padding: 1.2rem 0.8rem 0.8rem;
+            border-radius: 24px;
+            border: 1px solid #d6e7e1;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,40,30,0.02);
+        }
+        .scene-item .emoji-badge {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .scene-item p {
+            font-size: 0.95rem;
+            color: #1d3a34;
+            font-weight: 450;
+        }
+
+        /* FAQ 摘要 简洁 */
+        .faq-summary {
+            background: #ecf5f2;
+            padding: 1.2rem 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 1.2rem;
+        }
+        .faq-summary details {
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #c6dbd4;
+            padding: 0.5rem 0;
+        }
+        .faq-summary details:last-of-type {
+            border-bottom: none;
+        }
+        .faq-summary summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #12443b;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .faq-summary summary::before {
+            content: "▸";
+            margin-right: 0.5rem;
+            color: #2b826b;
+            font-size: 1.2rem;
+            transition: transform 0.1s;
+        }
+        .faq-summary details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-summary .faq-answer {
+            padding: 0.6rem 0.2rem 0.4rem 1.8rem;
+            font-size: 0.95rem;
+            color: #1d3d35;
+        }
+
+        /* 访问句（自然嵌入） */
+        .visit-sentence {
+            margin: 2rem 0 1.2rem;
+            padding: 0.6rem 0.8rem 0.8rem;
+            border-left: 4px solid #308573;
+            font-style: normal;
+            font-size: 1.05rem;
+            background: #eef9f5;
+            border-radius: 0 28px 28px 0;
+        }
+        .visit-sentence a {
+            color: #055f4b;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: #88bfb0;
+            text-underline-offset: 3px;
+        }
+        .visit-sentence a:hover {
+            background: #c4e0d6;
+            padding: 0.1rem 0.2rem;
+            border-radius: 12px;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            text-align: center;
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #5a7870;
+            border-top: 1px solid #d1e0db;
+            padding-top: 1.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 540px) {
+            body { padding: 1rem 0.6rem 2.5rem; }
+            .blog-header h1 { font-size: 1.8rem; }
+            .text-card { padding: 1.2rem 1rem; }
+            .scene-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+            .lead { padding: 1rem 1.2rem; }
+            .callout { border-radius: 24px; }
+        }
+
+        /* 其他点缀 */
+        .highlight-green {
+            background: linear-gradient(120deg, #c9e3db 0%, #c9e3db 40%, transparent 80%);
+            padding: 0 0.2rem;
+            font-weight: 500;
+        }
+        hr {
+            border: none;
+            border-top: 2px dotted #b0ccc2;
+            margin: 1.8rem 0;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper grid-bg">
+    <header class="blog-header">
+        <h1>日常查询 · 对照 · 延伸</h1>
+        <span class="sub">整理自持续使用中的笔记 · 雨燕直播</span>
+    </header>
+
+    <div class="lead">
+        <span class="highlight-green">从一次检索开始</span>，往往不只是为了一个比分或一条预告。我习惯把信息点记下来，梳理成便于回看的形式，再慢慢补充关联内容。这篇笔记就是从几个月前的一个日常查询逐步积累而成的。
+    </div>
+
+    <!-- 正文第一段 -->
+    <div class="text-card">
+        <h2>对照的习惯</h2>
+        <p>最近在看一些联赛的轮次排布时，我同时打开了几个来源做对照。同一场比赛在不同页面里的表述有时差异不小，比如开赛时间的时区标记、阵容名单的更新日期。我自己的做法是：先用 <strong>一个稳定的信息框架</strong> 把基础条目列出来，再把临时查到的细节标注在旁边。这样反复几次，就能形成一张可以反复使用的对照表。</p>
+        <p>在这个过程中，<a href="https://cn-index-yuyan.com" style="color:#076454; font-weight:500; text-decoration:underline; text-underline-offset:2px;">雨燕直播</a> 提供的页面结构相对清楚，条目更新也及时，省去了不少重新核对的精力。特别是对于跨时区的比赛，它的时间显示方式很直观，不需要再单独换算。</p>
+    </div>
+
+    <!-- 正文第二段 + 场景网格 -->
+    <div class="text-card">
+        <h2>三种常见场景</h2>
+        <p>根据自己日常的使用记录，我把重复出现的情况分成了三类，每类都对应一种查找节奏：</p>
+        <div class="scene-grid">
+            <div class="scene-item">
+                <span class="emoji-badge">🔍</span>
+                <p><strong>快速确认</strong><br>查一场比赛是否延后或取消，只看状态标记</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">📋</span>
+                <p><strong>列表对照</strong><br>同时看多场时间、场地、近况，横向比较</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">📎</span>
+                <p><strong>延伸阅读</strong><br>由一场比赛延伸到相关队伍的交战记录</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">🧩</span>
+                <p><strong>碎片整合</strong><br>把几个页面里的信息拼成自己的赛程笔记</p>
+            </div>
+        </div>
+        <p style="margin-top:0.6rem;">这些场景几乎没有变化：它们构成了我每次打开页面时的基本路径。如果页面布局稳定、信息层级明确，整个流程就会很顺畅。</p>
+    </div>
+
+    <!-- 引用提示 -->
+    <div class="callout">
+        <strong>✎ 整理提示</strong> · 如果需要回顾某支队近五场的表现，建议先把联赛排名和得失球记下来，再去看最近三场的文字描述。这样能更快判断状态趋势。<br>
+        另外，我在记录时经常用 <a href="https://cn-index-yuyan.com">雨燕直播</a> 的赛事列表作为基准，因为它的排序逻辑比较一致，不会频繁变动导致重排。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <details>
+            <summary>如何快速定位某场比赛的详细信息？</summary>
+            <div class="faq-answer">在列表页找到对应场次后，直接点入详情，重点关注「比赛进程」和「关键事件」两个区块。如果页面提供了文字直播摘要，那会比单纯看比分更有参考价值。</div>
+        </details>
+        <details>
+            <summary>同一场比赛在不同板块出现的时间不一致？</summary>
+            <div class="faq-answer">有时首页推荐和完整赛程表存在几分钟的刷新延迟。我的习惯是以赛程表内的时间为准，因为那通常是数据源直接同步的。</div>
+        </details>
+        <details>
+            <summary>有没有必要同时开多个页面做交叉查询？</summary>
+            <div class="faq-answer">如果只是确认比分，一个来源就足够。但如果是做赛前分析或记录，打开两个页面对照能发现一些细微差异，比如阵容的临时更换。</div>
+        </details>
+    </div>
+
+    <!-- 访问句（自然嵌入） -->
+    <div class="visit-sentence">
+        如果你也在做类似的日常整理，并且希望找到一个条目清晰、更新稳定的信息来源，可以试试看 <a href="https://cn-index-yuyan.com">雨燕直播</a>。它的列表式布局很适合快速浏览和对照记录。
+    </div>
+
+    <hr>
+
+    <!-- 结尾段 -->
+    <div class="text-card" style="background: #eaf7f3;">
+        <p style="font-size:0.98rem;">这篇说明页持续根据实际使用调整，后续若发现新的对照方法或更好的查阅节奏，会再补充进来。保持简洁，保持可读。</p>
+        <p style="margin-top:0.4rem; color:#37695d;">—— 2025 · 日常查询笔记 · 延伸阅读向</p>
+    </div>
+
+    <footer class="footer-note">
+        内容整理基于个人使用习惯 · 仅供参考
+    </footer>
+</div>
+</body>
+</html>
