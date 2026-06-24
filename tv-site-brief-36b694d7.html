@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 内容平台介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f6f2eb;
+      font-family: "Georgia", "Noto Serif SC", "Times New Roman", serif;
+      color: #1f2a2f;
+      line-height: 1.65;
+      padding: 0 1.2rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3.2rem 0 5rem;
+    }
+
+    /* 开场短句 — 类似引子 */
+    .opening {
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #404d52;
+      border-left: 3px solid #a0a89b;
+      padding-left: 1.4rem;
+      margin-bottom: 2.8rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .story-content {
+      background: #faf8f4;
+      padding: 2.4rem 2.2rem;
+      border-radius: 28px 8px 28px 8px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .story-content p {
+      margin-bottom: 1.25rem;
+      font-size: 1.02rem;
+      text-align: justify;
+    }
+
+    .story-content p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* 承接段落—温和分割 */
+    .bridge {
+      margin: 2rem 0 1.2rem 0;
+      padding: 0.8rem 0 0.4rem;
+      border-bottom: 1px dashed #d4cdc0;
+      font-size: 0.95rem;
+      color: #5b666b;
+      letter-spacing: 0.3px;
+    }
+
+    /* 特点列表 — 干净、克制 */
+    .feature-list {
+      list-style: none;
+      margin: 1.6rem 0 1.8rem;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding: 0.45rem 0 0.45rem 1.6rem;
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      color: #1f2a2f;
+    }
+
+    .feature-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      color: #7b8a7b;
+      font-weight: bold;
+      font-size: 1.6rem;
+      line-height: 1;
+      top: -0.05rem;
+    }
+
+    /* 引用块 / 提示框 */
+    .note-box {
+      background: #efeade;
+      border-left: 6px solid #b7bfa8;
+      padding: 1.2rem 1.6rem;
+      margin: 2.2rem 0 1.8rem;
+      border-radius: 0 16px 16px 0;
+      font-size: 0.96rem;
+      color: #2b3a3b;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.02);
+    }
+
+    .note-box strong {
+      font-weight: 600;
+      color: #385347;
+    }
+
+    .note-box a {
+      color: #2f5e4a;
+      text-decoration: none;
+      border-bottom: 1px solid #b0bcab;
+      transition: border-color 0.2s;
+    }
+
+    .note-box a:hover {
+      border-bottom-color: #1f3f32;
+    }
+
+    /* 温和的结尾区域 */
+    .gentle-end {
+      margin-top: 2.5rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #e0d9cf;
+      font-size: 0.95rem;
+      color: #4d5b5b;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .gentle-end span {
+      opacity: 0.8;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      body {
+        padding: 0 0.9rem;
+      }
+      .page {
+        padding: 2rem 0 3.6rem;
+      }
+      .story-content {
+        padding: 1.6rem 1.2rem;
+      }
+      .opening {
+        font-size: 1.25rem;
+        padding-left: 1rem;
+        margin-bottom: 2rem;
+      }
+      .feature-list li {
+        font-size: 0.96rem;
+        padding-left: 1.4rem;
+      }
+      .note-box {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .story-content p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 —— 直接点出用户可能的困惑 -->
+  <div class="opening">
+    打开一个陌生的链接，最先想知道的，往往是：<br>“这里到底是做什么的？”
+  </div>
+
+  <div class="story-content">
+
+    <!-- 第一段承接：从识别用途的角度展开 -->
+    <p>
+      很多人在初次看到 <strong>tv-site-igame.com</strong> 这个地址时，会下意识猜测它和游戏、视频或某种娱乐有关。这样的直觉并不算错，但若想更准确地理解它，不妨把它看作一个<em>内容索引的入口</em>——将散落在不同地方的资讯、资源、说明汇集在同一个地方，省去反复检索的精力。这便是它最初也最朴素的用途。
+    </p>
+
+    <p>
+      站点本身并不生产所有内容，而是扮演一个整理者的角色。你可以在其中找到许多与游戏、影视、工具等相关的介绍与指引，它像是书架上的一个标签，告诉你某一类东西大致在哪里、有什么需要注意。对于习惯了快速获取信息的人来说，这类整理过的页面往往能节省一些不必要的弯路。
+    </p>
+
+    <!-- 轻微的分割感，但不另起标题 -->
+    <div class="bridge">—— 一些你可以在这里遇到的内容类型 ——</div>
+
+    <!-- 特点列表（克制版） -->
+    <ul class="feature-list">
+      <li>游戏相关的资源索引与背景说明，不包含下载或破解链接</li>
+      <li>常见平台或工具的使用指南，侧重基础操作与注意事项</li>
+      <li>部分影视或番剧的简介与观看途径提示（仅做信息整理）</li>
+      <li>偶尔出现的冷门内容清单，适合想探索新方向的用户</li>
+    </ul>
+
+    <p>
+      以上这些条目并非全部，但它们大致勾勒出了站点的面貌。每一块内容都尽量保持简洁，目的是让浏览者迅速判断“这个页面对我有没有用”，而不是陷入冗长的阅读里。
+    </p>
+
+    <!-- 引用块 / 提示框 — 自然融入链接 -->
+    <div class="note-box">
+      <strong>✺ 一个小提醒</strong><br>
+      如果你只是想确认某个资源或介绍是否完整，可以直接前往
+      <a href="https://tv-site-igame.com">爱游戏</a>
+      的主页浏览。站点没有杂乱的弹窗或强制跳转，内容按类别排列，寻找起来并不费力。
+    </div>
+
+    <p>
+      在使用类似的信息整理站点时，有一个建议或许值得一听：不要期待它包含所有东西，而是把它当作一个起点。当你发现自己需要某个特定领域的资料时，顺着索引找到的线索，往往比漫无目的的搜索更可靠。这也是为什么这类页面虽然看起来简单，却依然被许多人保留在书签栏里。
+    </p>
+
+    <!-- 温和结尾 — 不煽情，不夸张 -->
+    <div class="gentle-end">
+      <span>如果你喜欢在浏览时保持一点探索的余地，那么这里或许能成为一个安静的起点。</span>
+      <span style="font-size: 0.88rem; opacity: 0.6;">—— 不必每次都有明确目的，偶尔随意看看也是一种使用方式。</span>
+    </div>
+
+  </div><!-- /story-content -->
+
+  <!-- 底部留白，不放置额外链接（已在上文自然嵌入） -->
+</div><!-- /page -->
+</body>
+</html>
