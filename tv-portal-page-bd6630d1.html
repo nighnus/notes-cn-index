@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <title>爱游戏 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #2d3a4a;
+            line-height: 1.6;
+            padding: 2rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* hero section */
+        .hero {
+            text-align: center;
+            padding: 3.2rem 1.2rem 2.8rem;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e6eaef;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #1e2a3a;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(145deg, #2a4b7a, #3f6797);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #556575;
+            max-width: 600px;
+            margin: 0.8rem auto 1.6rem;
+        }
+
+        .hero .sub {
+            font-size: 0.95rem;
+            color: #6f7d8c;
+            background: #f0f3f7;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #dce2ea;
+            letter-spacing: 0.3px;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e8ecf2;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.01);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 470;
+            color: #1c2a3c;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eef2f7;
+            padding-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 470;
+            color: #2f4053;
+            margin: 1.4rem 0 0.5rem;
+        }
+
+        .card p, .card li {
+            color: #3d4d5e;
+        }
+
+        .card ul {
+            padding-left: 1.4rem;
+            margin: 0.8rem 0 0.2rem;
+            list-style: none;
+        }
+
+        .card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .card li::before {
+            content: "—";
+            color: #8899aa;
+            position: absolute;
+            left: 0;
+            font-weight: 300;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            margin-top: 1rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #f8faff;
+            border-radius: 20px;
+            padding: 1.2rem 1.2rem 1.4rem;
+            border: 1px solid #e2e9f2;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #1f3044;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #5b6d7e;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.6rem;
+        }
+
+        .faq-q {
+            background: #f7fafd;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            border-left: 4px solid #cbd6e3;
+        }
+
+        .faq-q .q {
+            font-weight: 470;
+            color: #1e2e40;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-q .a {
+            font-size: 0.95rem;
+            color: #506070;
+        }
+
+        .footer-links {
+            margin-top: 2.2rem;
+            text-align: center;
+            padding: 1.8rem 0.5rem 0.5rem;
+            border-top: 1px solid #dce2ea;
+            font-size: 0.95rem;
+            color: #68788a;
+        }
+
+        .footer-links a {
+            color: #2f5680;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border 0.15s;
+        }
+
+        .footer-links a:hover {
+            border-bottom: 1px solid #2f5680;
+        }
+
+        .inline-link {
+            color: #2f5680;
+            text-decoration: none;
+            border-bottom: 1px solid #bcccdb;
+            transition: border 0.1s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 1px solid #2f5680;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body { padding: 1.2rem 0.8rem 2rem; }
+            .hero { padding: 2.2rem 0.8rem 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .card { padding: 1.6rem 1.2rem; }
+            .feature-list { gap: 1rem; }
+            .feature-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>一个能记住的<span>入口</span></h1>
+        <p>在不停变化的信息流里，有时你只需要一个安静的起点。<br>
+        这里没有复杂的导航，只为你保留一条清晰的路。</p>
+        <div class="sub">爱游戏 · 稳定访问 · 页面指引</div>
+    </div>
+
+    <!-- 优势区 + 说明区 混合卡片 -->
+    <div class="card-grid">
+
+        <!-- 卡片1：稳定入口与日常使用 -->
+        <div class="card">
+            <h2>稳定入口 · 日常打开</h2>
+            <p>无论是用电脑还是手机，浏览器里输入 <a href="https://tv-portal-igame.com" class="inline-link">爱游戏</a> 就能直接到达。页面结构轻量，没有自动跳转或多余弹窗，你看到的就是你需要的。</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>固定地址</strong>
+                    <span>域名简单，便于记忆和收藏，不会频繁变动。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>轻量加载</strong>
+                    <span>页面元素精简，打开速度快，不消耗多余流量。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>设备适配</strong>
+                    <span>在手机、平板、电脑上都能正常显示和操作。</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: #5e6f80;">很多用户习惯把这一页放在浏览器书签栏，想用的时候点一下就好，不用再搜索或翻找历史记录。</p>
+        </div>
+
+        <!-- 卡片2：页面说明 + 场景提示 -->
+        <div class="card">
+            <h2>页面说明与使用场景</h2>
+            <p>这个页面本身是一个信息入口，同时也承载着功能引导。你可以把它当作一个安静的基站点：</p>
+            <ul>
+                <li>想要快速回到某个熟悉的界面，直接从这里重新开始。</li>
+                <li>如果你帮朋友或家人设置设备，把 <a href="https://tv-portal-igame.com" class="inline-link">爱游戏</a> 存在桌面或书签里，他们自己就能找到。</li>
+                <li>偶尔页面更新或调整时，这里会保留简洁的提示，不会让你迷失在复杂的菜单里。</li>
+            </ul>
+            <h3>一些常见的用法</h3>
+            <p>有人把它设为主页，每天开机看到的就是这个干净页面；也有人只把它当作备用入口，在其他途径失效时，用这个地址保底。两种方式都可以，按你习惯来就好。</p>
+        </div>
+
+        <!-- 卡片3：FAQ 摘要 -->
+        <div class="card">
+            <h2>常见问题 · 摘要</h2>
+            <div class="faq-mini">
+                <div class="faq-q">
+                    <div class="q">▸ 这个页面是做什么的？</div>
+                    <div class="a">它是 <a href="https://tv-portal-igame.com" class="inline-link">爱游戏</a> 的固定介绍页，同时提供稳定的导航入口，内容以说明和指引为主。</div>
+                </div>
+                <div class="faq-q">
+                    <div class="q">▸ 为什么强调“稳定入口”？</div>
+                    <div class="a">因为网络环境和服务时常变化，我们希望你始终有一个能记住、能到达的地方，不需要到处打听新地址。</div>
+                </div>
+                <div class="faq-q">
+                    <div class="q">▸ 页面内容会经常更新吗？</div>
+                    <div class="a">会不定期调整说明和提示，但整体风格保持简单。如果有重要变化，会在页面顶部或卡片里注明。</div>
+                </div>
+                <div class="faq-q">
+                    <div class="q">▸ 如何反馈问题或建议？</div>
+                    <div class="a">目前没有专门的反馈表单，你可以通过其他已有渠道联系我们。页面本身会持续维护。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部链接与说明 -->
+    <div class="footer-links">
+        <p>如果你正在找那个熟悉的入口，现在就可以去 <a href="https://tv-portal-igame.com">爱游戏</a>。页面内容仅作指引，不构成任何承诺或保证。</p>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #8a9aaa;">© 2025 · 页面信息仅供参考 · 稳定使用体验以实际访问为准</p>
+    </div>
+
+</div>
+</body>
+</html>
