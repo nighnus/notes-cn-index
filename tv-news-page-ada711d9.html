@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 电视资讯与游戏平台介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f6fafd;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1a2a3a;
+      padding: 1.5rem 1rem 3rem;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #e2f0f9 0%, #cde3f0 100%);
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 20px rgba(0,90,120,0.08);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(56,178,172,0.20) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0a3e4a;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #1f5a68;
+      max-width: 640px;
+      margin: 0.3rem auto 1.2rem;
+      line-height: 1.7;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #27847a;
+      color: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(39,132,122,0.2);
+    }
+
+    /* 通用卡片网格 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2.8rem 0;
+    }
+    .card {
+      background: white;
+      border-radius: 1.6rem;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(0,50,70,0.06);
+      transition: transform 0.18s ease, box-shadow 0.2s;
+      border: 1px solid #e2eff5;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0,80,100,0.10);
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: #0b4a55;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h3 i {
+      font-style: normal;
+      background: #28857b;
+      color: white;
+      width: 1.8rem;
+      height: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+    .card p {
+      color: #2d4a58;
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+    }
+    .card .tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #e5f2f0;
+      color: #11635b;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* 说明区 + 场景 */
+    .intro-block {
+      background: #ffffff;
+      border-radius: 1.8rem;
+      padding: 2.2rem 2rem;
+      margin: 2.4rem 0;
+      box-shadow: 0 4px 12px rgba(0,60,80,0.04);
+      border-left: 5px solid #2b9b8f;
+    }
+    .intro-block h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #09464f;
+      margin-bottom: 0.9rem;
+    }
+    .intro-block p {
+      margin-bottom: 1rem;
+      color: #1f3e49;
+    }
+    .inline-link {
+      color: #187a6e;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #9cd3cb;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .inline-link:hover {
+      color: #0b5148;
+      border-bottom-color: #1b9082;
+    }
+
+    /* FAQ 摘要卡片 */
+    .faq-summary {
+      background: #ebf5f7;
+      border-radius: 1.8rem;
+      padding: 2rem 2rem 1.8rem;
+      margin: 2.8rem 0 2rem;
+    }
+    .faq-summary h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #09464f;
+      margin-bottom: 1.2rem;
+    }
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #125d5a;
+      margin-bottom: 0.2rem;
+    }
+    .faq-item p {
+      color: #2a4b54;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* 底部链接 */
+    .bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      justify-content: center;
+      margin-top: 2.8rem;
+      padding: 1.6rem 0 0.5rem;
+      border-top: 1px solid #d4e4ea;
+      font-size: 0.95rem;
+    }
+    .bottom-links a {
+      color: #1d6e66;
+      text-decoration: none;
+      border-bottom: 1px dotted #7ebcb3;
+    }
+    .bottom-links a:hover {
+      color: #094b44;
+      border-bottom-style: solid;
+    }
+    .bottom-links span {
+      color: #5b7a82;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .intro-block { padding: 1.6rem 1.2rem; }
+      .faq-summary { padding: 1.6rem 1.2rem; }
+      .card { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- hero -->
+  <section class="hero">
+    <h1>电视 · 游戏 · 新鲜资讯</h1>
+    <div class="sub">
+      一个专注于电视游戏内容、平台动态与玩家交流的信息站点，帮你快速了解值得关注的游戏情报与行业见闻。
+    </div>
+    <div class="badge">📡 持续更新 · 兼顾深度与趣味</div>
+  </section>
+
+  <!-- 优势区：网格卡片 -->
+  <div class="grid-2">
+    <div class="card">
+      <h3><i>⛳</i> 版块分明</h3>
+      <p>电视游戏评测、新作速递、怀旧专题、硬件资讯，按兴趣轻松浏览。每个栏目都有独立视角，避免信息过载。</p>
+      <span class="tag">分类清晰</span>
+    </div>
+    <div class="card">
+      <h3><i>📋</i> 内容来源透明</h3>
+      <p>每篇文章均标注参考或编译来源，尊重创作者，也让读者可以进一步查证。转载内容明确标识，保持可信度。</p>
+      <span class="tag">标注来源</span>
+    </div>
+    <div class="card">
+      <h3><i>🕹️</i> 兼顾经典与前沿</h3>
+      <p>不只是热门大作，也关注独立游戏、复古平台以及电视游戏生态中的小众话题，满足多元兴趣。</p>
+      <span class="tag">宽视野</span>
+    </div>
+    <div class="card">
+      <h3><i>🧭</i> 导航友好</h3>
+      <p>首页、专题页与文章页均采用一致布局，移动端适配良好，快速找到想看的内容。</p>
+      <span class="tag">响应式</span>
+    </div>
+  </div>
+
+  <!-- 说明区（站点介绍 + 可信说明） -->
+  <section class="intro-block">
+    <h2>关于这个站点</h2>
+    <p>
+      <strong>爱游戏</strong> 是一个以电视游戏资讯为核心的兴趣站点。站内文章覆盖游戏评测、行业新闻、经典回顾与实用指南，力求在信息碎片化的时代提供一些有温度的整理与分享。内容团队由几位热爱游戏的编辑组成，选材时更注重可读性与实际参考价值，而非单纯追逐流量。
+    </p>
+    <p>
+      每篇内容都经过事实核查或体验后撰写，遇有争议性消息会标注「传闻」或「待确认」。我们不生产破解、作弊或误导性教程，只做干净、坦诚的游戏内容聚合与创作。如果你也喜欢在电视大屏上玩游戏，或者对游戏文化背后的故事感兴趣，不妨来 <a href="https://tv-news-igame.com" class="inline-link">爱游戏</a> 逛一逛，也许会发现几篇让你沉浸的文字。
+    </p>
+    <p>
+      站内也设有投稿与建议通道（目前通过邮件表单），欢迎玩家分享自己的游戏感悟或指正内容错误。每一次互动都会让这个小站变得更可靠。
+    </p>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section class="faq-summary">
+    <h2>常见疑问 · 简短回答</h2>
+    <div class="faq-item">
+      <strong>这个站多久更新一次？</strong>
+      <p>常规情况下每周更新 3~5 篇，遇大型游戏展会或新作发售时会临时增加内容。更新时间大部分在晚间或周末。</p>
+    </div>
+    <div class="faq-item">
+      <strong>内容可以转载吗？</strong>
+      <p>原创内容遵循 CC BY-NC 4.0 协议，转载时注明作者与原始链接即可；翻译或编译文章请查看页脚的具体授权说明。</p>
+    </div>
+    <div class="faq-item">
+      <strong>有没有读者社群或讨论区？</strong>
+      <p>目前以站内文章评论为主，部分热门文章会开启留言。未来计划开设轻量讨论板块，但不会引入过多社交功能。</p>
+    </div>
+    <div class="faq-item">
+      <strong>如何联系编辑？</strong>
+      <p>网站底部有联系表单（邮件），一般 2~3 个工作日内回复。不设即时聊天，保持沟通效率。</p>
+    </div>
+  </section>
+
+  <!-- 底部链接行 -->
+  <footer class="bottom-links">
+    <a href="https://tv-news-igame.com">爱游戏</a>
+    <a href="#">文章归档</a>
+    <a href="#">关于我们</a>
+    <a href="#">隐私说明</a>
+    <span>📮 联系 · 投稿</span>
+  </footer>
+
+  <!-- 补充一行小字备注，不占用主要结构，但增加可信感 -->
+  <p style="margin-top: 2rem; font-size: 0.8rem; text-align: center; color: #6f8f99; border-top: 1px solid #dce9ef; padding-top: 1.2rem;">
+    爱游戏 · 电视游戏资讯站 · 内容仅供参考，不构成购买或投资建议。
+  </p>
+
+</div>
+</body>
+</html>
